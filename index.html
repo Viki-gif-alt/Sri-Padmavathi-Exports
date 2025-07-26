@@ -1,166 +1,142 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sri Padvamathi Exports</title>
+  <meta charset="UTF-8">
+  <title>I Miss U So, Chellam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      color: #fdd86f;
-      text-align: center;
-      padding: 30px 20px;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      position: relative;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffe6f0, #ffccd5, #ff99aa);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Great Vibes', cursive;
+      flex-direction: column;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
+    .container {
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 3s ease-in forwards;
+      animation-delay: 2s;
+    }
+
+    .message, .closing {
+      font-size: 3.2em;
+      color: #fff0f5;
+      text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff66cc, 0 0 30px #ff3399;
+      animation: glow 4s infinite alternate;
+    }
+
+    .closing {
+      font-size: 2.2em;
+      margin-top: 20px;
+      animation: fadeText 2s ease-in forwards;
+      animation-delay: 5s;
+      opacity: 0;
+    }
+
+    .heart {
+      color: #ff3366;
+      font-size: 1.5em;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ffc0cb, 0 0 20px #ff99cc;
+      }
+      to {
+        text-shadow: 0 0 20px #ff66cc, 0 0 30px #ff3399;
+      }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes fadeText {
+      to { opacity: 1; }
+    }
+
+    .floating-hearts {
+      position: absolute;
       width: 100%;
       height: 100%;
-      background: rgba(15, 60, 47, 0.8); /* Dark overlay */
-      z-index: -1;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      pointer-events: none;
     }
 
-    .logo {
-      max-width: 300px;
-      width: 90%;
-      margin: 0 auto 30px;
-      display: block;
+    .heart-float {
+      position: absolute;
+      color: #ffb6c1;
+      font-size: 20px;
+      opacity: 0;
+      animation: float 10s linear infinite, heartFade 2s ease-in forwards;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      color: #ffde78;
+    @keyframes float {
+      0% { transform: translateY(100vh) translateX(0); }
+      100% { transform: translateY(-10vh) translateX(-50px); }
     }
 
-    p {
-      font-size: 18px;
-      margin-top: 0;
-      color: #ffe89f;
+    @keyframes heartFade {
+      0% { opacity: 0; }
+      100% { opacity: 0.8; }
     }
 
-    .tagline {
-      font-size: 16px;
-      margin-top: 10px;
-      color: #f0d88f;
-    }
-
-    .contact {
-      margin-top: 30px;
-    }
-
-    .contact p {
-      margin: 6px 0;
-      color: #fff4ce;
-    }
-
-    .whatsapp {
-      margin-top: 20px;
-    }
-
-    .whatsapp a {
-      display: inline-block;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .whatsapp a:hover {
-      background-color: #1ebe5d;
-    }
-
-    .products {
-      margin-top: 50px;
-    }
-
-    .products h2 {
-      color: #ffe89f;
-      font-size: 26px;
-      margin-bottom: 20px;
-    }
-
-    .product {
-      background-color: rgba(26, 94, 52, 0.85);
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 400px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .product h3 {
-      color: #fff5c0;
-      margin-top: 10px;
-      font-size: 22px;
-    }
-
-    .price-tag {
-      margin-top: 8px;
-      font-size: 18px;
-      color: #ffffff;
-      background-color: #2e844b;
-      padding: 6px 12px;
-      border-radius: 20px;
-      display: inline-block;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 26px;
-      }
-      p, .product h3, .price-tag {
-        font-size: 16px;
-      }
+    /* Hide YouTube player */
+    #musicPlayer {
+      position: absolute;
+      left: -9999px;
+      width: 0;
+      height: 0;
     }
   </style>
 </head>
 <body>
 
-  <img src="logo.png" alt="Sri Padvamathi Exports Logo" class="logo" />
-
-  <h1>Sri Padvamathi Exports</h1>
-  <p>From Our Village to the World</p>
-  <p class="tagline">Trusted in quality. Committed to tradition.</p>
-
-  <div class="contact">
-    <h2>Contact Us</h2>
-    <p>Email: padvamathiexports1@gmail.com</p>
-    <p>Phone: +91 86100 40835</p>
-    <p>Location: Tiruvannamalai, Tamil Nadu, India</p>
+  <!-- Floating Hearts -->
+  <div class="floating-hearts">
+    <div class="heart-float" style="left: 10%; animation-delay: 1s;">💗</div>
+    <div class="heart-float" style="left: 25%; animation-delay: 3s;">💖</div>
+    <div class="heart-float" style="left: 40%; animation-delay: 5s;">💘</div>
+    <div class="heart-float" style="left: 55%; animation-delay: 2s;">💕</div>
+    <div class="heart-float" style="left: 70%; animation-delay: 4s;">💝</div>
+    <div class="heart-float" style="left: 85%; animation-delay: 6s;">💞</div>
   </div>
 
-  <div class="whatsapp">
-    <a href="https://wa.me/918610040835" target="_blank">
-      💬 Chat with us on WhatsApp
-    </a>
-  </div>
-
-  <div class="products">
-    <h2>Our Products</h2>
-
-    <div class="product">
-      <img src="rice.jpg" alt="Rice" />
-      <h3>Premium White Rice</h3>
-      <div class="price-tag">₹65/kg</div>
+  <!-- Main Message -->
+  <div class="container">
+    <div class="message">
+      I miss U so,<br>
+      <span class="heart">❤️</span> Chellam <span class="heart">💛</span> Thangam
     </div>
-
-    <!-- Add more products in this format -->
+    <div class="closing">
+      Viji and Viki 💑<br>
+      Viji, you are my teddy bear 🧸❤️
+    </div>
   </div>
+
+  <!-- YouTube Music Embed (Autoplay, Loop, Hidden) -->
+  <iframe id="musicPlayer" 
+    src="https://www.youtube.com/embed/zVjVqKoS9QU?autoplay=1&mute=1&loop=1&playlist=zVjVqKoS9QU"
+    allow="autoplay"
+    frameborder="0">
+  </iframe>
 
 </body>
 </html>
+  
